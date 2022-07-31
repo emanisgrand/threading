@@ -1,15 +1,15 @@
 #include "threading.h"
 
-void *funky_thread()
+void* threaded_proc()
 {
-	printf("threaded process\n");
-	pthread_exit(NULL);
+    printf("here's a thread.");
 }
 
-int main()
+// examples:
+void creating_a_thread_example()
 {
-	pthread_t thread = 0;
-	pthread_create(&thread, NULL, &funky_thread, NULL);
-	pthread_join(thread, NULL);
-	//pthread_exit(NULL); 
+    pthread_t thread = 0;    
+    pthread_create(&thread, NULL, threaded_proc, NULL);
+    pthread_join(thread, NULL);
+    pthread_exit(NULL);
 }
