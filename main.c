@@ -1,6 +1,8 @@
 // BELFPC
 #include "args_and_returns.h"
 
+void* hello_return(void* args);
+
 int main()
 {
     char* str;
