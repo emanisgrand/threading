@@ -1,13 +1,6 @@
 #include "args_and_returns.h"
 
-void* hello_return(void* args)
-{
-    // allocate a new string on the heap with "Hello World!"
-    char * hello = strdup("allocated on the heap.\n  [char* <-> (main)]\n");
-    return (void *) hello;
-}
-
-void *printHello(void *thread_arg)
+void *print_hello(void *thread_arg)
 {
 	struct thread_data *my_data;
 
@@ -19,6 +12,7 @@ void *printHello(void *thread_arg)
 	sum=my_data->sum;
 	strcpy(hello_msg, my_data->message);
 	printf("taskid = %d, sum = %d, message = %s\n", taskid, sum, hello_msg);	
+    pthread_exit(NULL);
 }
 
 void *print_message_function(void *ptr)
@@ -58,7 +52,25 @@ void pass_multiple_arguments()
     my_thread_data.sum = 35;
     my_thread_data.message = "Ahyuk!";
 
-    int my_id = pthread_create(&my_thread, NULL, printHello, (void*) &my_thread_data);
+    int my_id = pthread_create(&my_thread, NULL, print_hello, (void*) &my_thread_data);
     pthread_join(my_thread, NULL);
+    pthread_exit(NULL);
+}
+
+void return_from_join()
+{
+    char* str;
+    pthread_t thread; 
+    // create a new thread that runs hello_return w/o arguments
+    pthread_create(&thread, NULL, hello_return, NULL);
+    // wait until thread completes. assign return value to str
+    pthread_join(thread, (void**) & str);
+    printf("%s", str);
+}
+
+void* hello_return(void* args)
+{
+    char * hello = strdup("allocated on the heap.\n  [char* <-> (main)]\n");
+    return (void *) hello;
     pthread_exit(NULL);
 }

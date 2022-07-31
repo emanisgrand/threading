@@ -14,8 +14,7 @@ struct thread_data {
 Create independent threads each of which will execute function 
 Wait till threads are complete before main continues. Unless
 we wait, we run the risk of executing an exit which wil terminate
-the process and all threads before the threads have completed.
-*/
+the process and all threads before the threads have completed.*/
 void pass_single_argument();
 
 /* SUMMARY
@@ -25,15 +24,26 @@ pthread_join is intended to prevent main from ending before the thread. Likely n
 Exit.  */
 void pass_multiple_arguments(); 
 
-
 /* SUMMARY
 Initializes a thread_data pointer and its local variables, then them prints to console.
 <params>  
 1. void* thread_arg: cast to a thread_data struct and fill local vars*/
-void *printHello(void *thread_arg);
+void *print_hello(void *thread_arg);
 
 /* SUMMARY
 Test function. Prints to console.
 <params>
 1. void *ptr: cast to char and stored in local variable */
 void *print_message_function(void *ptr);
+
+/* SUMMARY
+Allocate memory for the char* .
+Cast the char* to a void* to return type.
+<params>
+1. void *args: not sure.*/
+void *hello_return(void* args);
+
+/* SUMMARY
+Create a new thread that runs hello_return w/o arguments.
+Wait until thread completes. Assign return value to str */
+void return_from_join();
