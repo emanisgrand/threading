@@ -1,8 +1,7 @@
-#include "args_and_returns.h"
-
+#include "thread_funcs.h"
 
 int main()
 {
-    return_from_join();
+    join_main_w_calls();
     return 0;
 }
