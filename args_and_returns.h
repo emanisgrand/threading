@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <string.h>
-#include <malloc.h>
+#include <stdio.h> // printf
+#include <stdlib.h> // exit 
+#include <pthread.h> // pthread_t, pthread_join, pthread_exit, etc..
+#include <string.h> // strcpy 
+#include <malloc.h> // malloc
 
 struct thread_data {
 	int thread_id;

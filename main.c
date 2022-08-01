@@ -2,6 +2,5 @@
 
 int main()
 {
-    join_main_w_calls();
-    return 0;
+    demo_stacksize_delta();
 }
