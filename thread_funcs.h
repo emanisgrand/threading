@@ -1,4 +1,4 @@
-#include <pthread.h> // pthread_detach, pthread_self, pthread_exit, pthread_join
+#include <pthread.h> // pthread_cancel, pthread_detach, pthread_self, pthread_exit, pthread_join
 #include <stdio.h>	// printf
 #include <unistd.h> // sleep
 #include <stdlib.h> // exit
